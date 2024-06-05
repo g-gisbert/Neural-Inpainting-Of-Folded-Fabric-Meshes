@@ -84,6 +84,6 @@ target_include_directories(pgm PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/deps/libIGL/i
 
 # add the args.hxx project which we use for command line args
 target_include_directories(pgm PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/deps/polyscope/deps/args")
-target_link_libraries(pgm geometry-central polyscope ${CGAL_LIBRARIES} -lm -I./deps/libIGL/include/ OpenMP::OpenMP_CXX)
+target_link_libraries(pgm geometry-central polyscope ${CGAL_LIBRARIES} -lm -I./deps/libIGL/include/)
 target_precompile_headers(pgm PRIVATE src/pch.h)
 

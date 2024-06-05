@@ -18,7 +18,6 @@ import numpy as np
 from torch.utils.data import DataLoader
 
 import os
-import neptune
 
 
 def force_cudnn_initialization():
@@ -46,26 +45,11 @@ conf = {
 'beta': 0.0001,
 'gamma': 1.0}
 
-run = neptune.init_run(
-    project="guillaume-gisbert/surface-inpainting",
-    api_token="eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiJiZjhkNDRlMy02OTkzLTQ3MjMtOWFiNC02NDJkNGI4M2JlZjUifQ==",
-)
-
 n_directory = len(helpers.lsd("./experiments"))
 os.mkdir(f"./experiments/exp{n_directory}")
 
-params = {
-    "lr": conf['lr'],
-    "bs": conf['batch_size'],
-    "epochs": conf['epochs'],
-    "exp n°": n_directory
-}
-run["parameters"] = params
-run["name"] = "Equal New Regu"
-
 model = AUNet().to(device)
 #model.load_state_dict(torch.load("./output/chkpt.tar")['weights'])
-
 
 # Create data loaders.
 ds_tr = SF_Dataset(train=True)
@@ -119,11 +103,6 @@ for ep in range(1, conf['epochs'] + 1):
         losses['loss_tot'].backward()
         opt.step()
 
-        run["train/loss"].append(losses['loss_tot'])
-        run["train/loss_mse"].append(losses['loss_mse'])
-        run["train/loss_reg"].append(losses['loss_reg'])
-        run["train/loss_interpen"].append(losses['loss_interpen'])
-
         losses_tr.update(**{k: v.item() for k, v in losses.items()})
         if bi % print_loss_tr_every == 0:
             losses_avg = losses_tr.get_losses()
@@ -159,8 +138,6 @@ for ep in range(1, conf['epochs'] + 1):
 
     loss_va = loss_va_run / len(ds_va)
     print(' ltot_va: {:.4f}'.format(loss_va), end='')
-    run["train/loss_va"].append(loss_va)
-
     scheduler.step(loss_va)
 
     # Save train state.
@@ -171,4 +148,4 @@ for ep in range(1, conf['epochs'] + 1):
         bestVa = loss_va
 
     print(' || total time : {:.0f} s'.format(timer() - tstart))
-run.stop()
+

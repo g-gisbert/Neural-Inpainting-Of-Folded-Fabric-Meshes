@@ -9,13 +9,24 @@ The method proposed aims to fill holes in incomplete meshes representing fabrics
 
 ## Requirements
 
+Download the repo using :
+```bash
+git clone https://github.com/g-gisbert/Neural-Inpainting-Of-Folded-Fabric-Meshes.git
+```
+
 You can easily create a conda environnement with all the necessary dependencies:
 ```bash
 conda env create -f environment.yaml
 conda activate NIF
 ```
 
-To download
+To download the weights, use the command:
+```bash
+python trainUnet.py
+```
+
+We recommend to use the 'standard.tar' weights for most cases. 'gravity.tar' has been trained without rotations so the prediction takes the orientation into account.
+'interpen.tar' has been trained with a bigger weight on the auto-intersection loss term and should predict less auto-intersected surfaces.
 
 ## Training
 
@@ -28,7 +39,7 @@ The `train.py` file contains a `conf` dictionnary representing all the available
 
 To train the network, simply type:
 ```bash
-python train.py
+python trainUnet.py
 ```
 
 The output folder will contain the latest weights file and the weights that minimize the loss as well as some outputs in the 
