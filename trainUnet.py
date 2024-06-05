@@ -35,7 +35,7 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 # Config
 conf = {
 'lr': 0.001,
-'batch_size': 32,
+'batch_size': 2, # Change this to 32 to reproduce paper results
 'epochs': 500,
 'lr_factor': 0.3,
 'lr_patience': 25,
@@ -46,7 +46,8 @@ conf = {
 'gamma': 1.0}
 
 n_directory = len(helpers.lsd("./experiments"))
-os.mkdir(f"./experiments/exp{n_directory}")
+os.makedirs(f"./output", exist_ok=True)
+os.makedirs(f"./experiments/exp{n_directory}", exist_ok=True)
 
 model = AUNet().to(device)
 #model.load_state_dict(torch.load("./output/chkpt.tar")['weights'])

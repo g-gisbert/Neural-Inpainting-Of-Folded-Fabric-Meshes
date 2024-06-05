@@ -284,7 +284,7 @@ def transform_tensor_to_ply(tensor, n, bi, end, verbose=True):
 
     for i in range(batch_size):
         points = tensor[i].detach().cpu().numpy()
-        filename = f'/home/guillaume/Documents/data/experiments/exp{n}/file_{batch_size * bi + i}{end}.ply'
+        filename = f'./experiments/exp{n}/file_{batch_size * bi + i}{end}.ply'
         write_ply_file(points, filename)
         if verbose:
             print(f'PLY file {filename}{end} saved.')
@@ -294,8 +294,8 @@ def save_to_npy(data, num, in_out):
     data0, data1 = np.split(data, 2, axis=0)
     data0 = np.squeeze(data0)
     data1 = np.squeeze(data1)
-    np.save("/home/guillaume/Documents/data/experiments/exp2/" + str(num) + "_" + in_out + ".npy", data0)
-    np.save("/home/guillaume/Documents/data/experiments/exp2/" + str(num + 1) + "_" + in_out + ".npy", data1)
+    np.save("./experiments/exp2/" + str(num) + "_" + in_out + ".npy", data0)
+    np.save("./experiments/exp2/" + str(num + 1) + "_" + in_out + ".npy", data1)
 
 
 def index_points(point_clouds, index):

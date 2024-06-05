@@ -71,7 +71,7 @@ std::vector<Vector3> sample(const VertexPositionGeometry& geom3D, const VertexPo
 }
 
 void write_ply(const std::vector<Vector3>& data, const std::string& fn) {
-    std::ofstream file { "../../" + fn};
+    std::ofstream file { fn};
 
     for (const Vector3& elem : data) {
         file << elem[0] << " " << elem[1] << " " << elem[2] << "\n";
