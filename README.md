@@ -4,17 +4,17 @@
 
 This repository contains a research prototype implementation of "Neural Inpainting of Folded Fabrics with Interactive Editing", Computer & Graphics.
 
-The method proposed aims to fill holes in incomplete meshes representing fabrics. The provided files enable the user to either retrain the network or directly apply it to data using the provided weights. Additionally, the user can utilize several editing tools to guide the output predicted by the network. The repository also contains the ScarfFolds dataset used for the training.
+The proposed method aims at filling holes in incomplete meshes representing fabrics. The provided files enable the user to either retrain the network or to directly apply it to data using the provided weights. Additionally, the user can use several editing tools to guide the output predicted by the network. The repository also contains the ScarfFolds dataset used for the training.
 
 
 ## Requirements
 
-Download the repo using :
+Download the repo using:
 ```bash
 git clone https://github.com/g-gisbert/Neural-Inpainting-Of-Folded-Fabric-Meshes.git
 ```
 
-You can easily create a conda environnement with all the necessary dependencies:
+You can easily create a conda environment with all the necessary dependencies:
 ```bash
 conda env create -f environment.yaml
 conda activate NIF
@@ -22,11 +22,11 @@ conda activate NIF
 
 To download the weights, use the command:
 ```bash
-python trainUnet.py
+./downloadWeights.sh
 ```
 
-We recommend to use the 'standard.tar' weights for most cases. 'gravity.tar' has been trained without rotations so the prediction takes the orientation into account.
-'interpen.tar' has been trained with a bigger weight on the auto-intersection loss term and should predict less auto-intersected surfaces.
+We recommend using the 'standard.tar' weights for most cases. 'gravity.tar' has been trained without rotations so the prediction takes the orientation into account.
+'interpen.tar' has been trained with a larger weight on the auto-intersection loss term and should predict fewer auto-intersected surfaces.
 
 ## Training
 
@@ -42,7 +42,7 @@ To train the network, simply type:
 python trainUnet.py
 ```
 
-The output folder will contain the latest weights file and the weights that minimize the loss as well as some outputs in the 
+The output folder will contains the latest weights file and the weights that minimize the loss. The `experiments` folder contains forward passes 
 
 ## Inference
 
@@ -50,8 +50,32 @@ To use the model on the data provided, use the followning command:
 ```bash
 python inferencePolyscope.py [path/to/weights] [path/to/file] [grab | twist | pinch]
 ```
+Grab, twist and pinch represent the different editing tools available. Choose the one to use. 
+
 
 To test the proposed example:
 ```bash
 python inferencePolyscope.py ./weights/standard.tar ./examples/sim1_hole.ply grab
+```
+
+## Preprocessing
+
+The `example` folder contains parametrized meshes, which is the input required but the network. To process other obj files and parametrize them, you can use the C++ program located in the `HoleMeshTo2D` folder.
+```bash
+cd HoleMeshTo2D
+mkdir build
+cd build
+cmake ..
+make -j8
+```
+
+The program is used as follows :
+```bash
+./bin/pgm [path/to/obj] [nTriangleStrips]
+```
+The `nTriangleStrips` defines the size of the region arround the hole you want to consider for the inpainting task. Specifically, 
+
+You can test the example obj mesh (which will produce the same `ply` file as the one in the `example` folder) by typing :
+```bash
+./bin/pgm ../../objs/sim1_hole.obj 16
 ```
