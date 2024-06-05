@@ -44,14 +44,14 @@ class SF_Dataset(Dataset):
         self.datapath = []
         self.data = {}
         self.masks = {}
-        self.n_masks = 500
+        self.n_masks = 5000
         self.N = 64
 
         
         if train:
             data_path = "./ScarfFolds/train"
         else:
-            self.n_masks = 5
+            self.n_masks = 500
             data_path = "./ScarfFolds/test"
 
         

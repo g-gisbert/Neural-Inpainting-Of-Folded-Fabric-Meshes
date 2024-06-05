@@ -9,9 +9,10 @@ The proposed method aims at filling holes in incomplete meshes representing fabr
 
 ## Requirements
 
-Download the repo using:
+Download the repo and open it using:
 ```bash
 git clone https://github.com/g-gisbert/Neural-Inpainting-Of-Folded-Fabric-Meshes.git
+cd Neural-Inpainting-Of-Folded-Fabric-Meshes
 ```
 
 You can easily create a conda environment with all the necessary dependencies:
@@ -79,3 +80,5 @@ You can test the example obj mesh (which will produce the same `ply` file as the
 ```bash
 ./bin/pgm ../../objs/sim1_hole.obj 16
 ```
+
+This will open a window showing the parametrization and create the `ply` file.

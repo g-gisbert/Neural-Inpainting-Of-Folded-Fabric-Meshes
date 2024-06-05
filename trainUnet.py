@@ -45,6 +45,7 @@ conf = {
 'beta': 0.0001,
 'gamma': 1.0}
 
+os.makedirs(f"./experiments", exist_ok=True)
 n_directory = len(helpers.lsd("./experiments"))
 os.makedirs(f"./output", exist_ok=True)
 os.makedirs(f"./experiments/exp{n_directory}", exist_ok=True)

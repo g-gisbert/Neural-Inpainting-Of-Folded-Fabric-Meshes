@@ -507,18 +507,6 @@ def apply_random_rotation(pc):
     tmp = rot_matrix @ pc.view(3, 64*64)
     return tmp.view(3, 64, 64)
 
-""" Regu normals
-    n_pref = compute_normals(self.im_pred)
-    torch.nn.functional.normalize(n_pref, dim=2)
-    x_kernel = torch.tensor([[0, 0, 0], [-1, 0, 1], [0, 0, 0]], dtype=torch.float32).unsqueeze(0).unsqueeze(0).expand(-1, 3, -1, -1).to(torch.device('cuda'))
-    y_kernel = torch.tensor([[0, 1, 0], [0, 0, 0], [0, -1, 0]], dtype=torch.float32).unsqueeze(0).unsqueeze(0).expand(-1, 3, -1, -1).to(torch.device('cuda'))
-    replicate_padding = torch.nn.ReplicationPad2d(1)
-    data = replicate_padding(n_pref)
-    b = torch.nn.functional.conv2d(data, x_kernel)
-    c = torch.nn.functional.conv2d(data, y_kernel)
-    loss_normals = b.mean() + c.mean()
-    losses['loss_normals'] = beta * (loss_normals * loss_normals)**2
-"""
 
 def compute_mean_curvature(x): # x :shape(B, 3, H, W)
     B, _, H, W = x.shape
