@@ -1,0 +1,3 @@
+Title: Neural Inpainting of Folded Fabrics with Interactive Editing
+Authors: Guillaume Gisbert, Raphaëlle Chaine, David Coeurjolly
+Operating System: Linux, MacOSX
