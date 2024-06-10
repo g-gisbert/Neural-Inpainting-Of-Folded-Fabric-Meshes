@@ -21,10 +21,11 @@ conda env create -f environment.yaml
 conda activate NIF
 ```
 
-To download the weights, use the command:
+To download the weights and the database, use the command:
 ```bash
 ./downloadWeights.sh
 ```
+This will also extract the dataset archive.
 
 We recommend using the 'standard.tar' weights for most cases. 'gravity.tar' has been trained without rotations so the prediction takes the orientation into account.
 'interpen.tar' has been trained with a larger weight on the auto-intersection loss term and should predict fewer auto-intersected surfaces.

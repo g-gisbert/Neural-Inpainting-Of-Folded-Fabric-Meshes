@@ -13,4 +13,15 @@ do
     wget "$url/$file"
 done
 
-echo "Files downloaded successfully!"
+echo "Weights downloaded successfully!"
+
+file="scarffolds.tar.gz"
+
+echo "Downloading $file..."
+wget "$url/$file"
+
+echo "Dataset downloaded successfully!"
+
+tar -xzvf scarffolds.tar.gz
+
+echo "Dataset extracted"
