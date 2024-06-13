@@ -75,7 +75,7 @@ The program is used as follows :
 ```bash
 ./bin/pgm [path/to/obj] [nTriangleStrips]
 ```
-The `nTriangleStrips` defines the size of the region arround the hole you want to consider for the inpainting task. Specifically, 
+The `nTriangleStrips` defines the size of the region arround the hole you want to consider for the inpainting task. 
 
 You can test the example obj mesh (which will produce the same `ply` file as the one in the `example` folder) by typing :
 ```bash

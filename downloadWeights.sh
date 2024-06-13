@@ -17,6 +17,8 @@ echo "Weights downloaded successfully!"
 
 file="scarffolds.tar.gz"
 
+cd ..
+
 echo "Downloading $file..."
 wget "$url/$file"
 
