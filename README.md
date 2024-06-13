@@ -25,7 +25,7 @@ To download the weights and the database, use the command:
 ```bash
 ./downloadWeights.sh
 ```
-This will also extract the dataset archive.
+This will also extract the dataset archive. The total size of the required files is about 3Go.
 
 We recommend using the 'standard.tar' weights for most cases. 'gravity.tar' has been trained without rotations so the prediction takes the orientation into account.
 'interpen.tar' has been trained with a larger weight on the auto-intersection loss term and should predict fewer auto-intersected surfaces.
