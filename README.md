@@ -20,7 +20,7 @@ You can easily create a conda environment with all the necessary dependencies:
 conda env create -f environment.yaml
 conda activate NIF
 ```
-
+The project has been tested with CUDA driver version 11.7.
 To download the weights and the database, use the command:
 ```bash
 ./downloadWeights.sh

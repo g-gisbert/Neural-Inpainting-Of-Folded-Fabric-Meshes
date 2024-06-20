@@ -1,6 +1,6 @@
 """
 Original author: Jan Bednarik
-Adapated: Guillaume Gisbert
+Adapted: Guillaume Gisbert
 """
 
 # 3rd party.
@@ -11,7 +11,6 @@ from plyfile import PlyData, PlyElement
 import random
 
 # Python std.
-import yaml
 import os
 import re
 
@@ -106,20 +105,6 @@ def identity(x):
     """
     return x
 
-
-def load_conf(path):
-    """ Returns the loaded .cfg config file.
-
-    Args:
-        path (str): Aboslute path to .cfg file.
-
-    Returns:
-    dict: Loaded config file.
-    """
-
-    with open(path, 'r') as f:
-        conf = yaml.full_load(f)
-    return conf
 
 
 def jn(*parts):

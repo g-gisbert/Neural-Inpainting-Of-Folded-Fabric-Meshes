@@ -6,8 +6,8 @@ channels:
 
 dependencies:
   - python=3.11
-  - pytorch=2.1.1
-  - pytorch-cuda=12.1
+  - pytorch=1.13.1
+  - pytorch-cuda=11.7
   - torchvision
   - matplotlib
   - pip
