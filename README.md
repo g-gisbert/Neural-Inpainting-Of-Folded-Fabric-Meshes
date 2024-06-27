@@ -43,6 +43,7 @@ To train the network, simply type:
 ```bash
 python trainUnet.py
 ```
+/!\ Depending on your hardware, the training can take between 10 and 20 hours.
 
 The output folder will contains the latest weights file and the weights that minimize the loss. The `experiments` folder contains forward passes 
 
@@ -59,6 +60,8 @@ To test the proposed example:
 ```bash
 python inferencePolyscope.py ./weights/standard.tar ./examples/sim1_hole.ply grab
 ```
+
+This command will reproduce the image shown in Figure 6b on the paper.
 
 ## Preprocessing
 
@@ -82,4 +85,4 @@ You can test the example obj mesh (which will produce the same `ply` file as the
 ./bin/pgm ../../objs/sim1_hole.obj 16
 ```
 
-This will open a window showing the parametrization and create the `ply` file.
+This will open a window showing the parametrization and create the `ply` file. The command reproduces the Fig. 2b of the paper.
