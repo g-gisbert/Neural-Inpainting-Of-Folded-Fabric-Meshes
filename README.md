@@ -61,7 +61,8 @@ To test the proposed example:
 python inferencePolyscope.py ./weights/standard.tar ./examples/sim1_hole.ply grab
 ```
 
-This command will reproduce the image shown in Figure 6b on the paper.
+To reproduce the Fig. 6b of the paper, uncheck on the left window the `Init` and `Prediction pc` boxes and change the `change y` slider to `0` on the top right panel.
+
 
 ## Preprocessing
 
@@ -85,4 +86,8 @@ You can test the example obj mesh (which will produce the same `ply` file as the
 ./bin/pgm ../../objs/sim1_hole.obj 16
 ```
 
-This will open a window showing the parametrization and create the `ply` file. The command reproduces the Fig. 2b of the paper.
+This will open a window showing the parametrization and create the `ply` file.
+To reproduce the Fig. 2ab of the paper type the following command and uncheck the `Param` and `samples in 2D` boxes on the left window:
+```bash
+./bin/pgm ../../objs/pipeline_hole.obj 102
+```

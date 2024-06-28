@@ -101,12 +101,13 @@ flattenHole(ManifoldSurfaceMesh& mesh, VertexPositionGeometry& geometry, int nTr
     Eigen::MatrixXi b(2,1);
     b(0) = 0;
     b(1) = 1;
+    b(2) = 2;
     double l = norm(pts[0] - pts[1]);
     Eigen::MatrixXd bc(2,2);
-    bc << 0, 0, l, 0;
+    bc << l/1.414, 0, l, -l;
 
     // Initialize ARAP
-    arap_data.max_iter = 100;
+    arap_data.max_iter = 1000;
     arap_precomputation(V,F,2,b,arap_data);
 
     // Solve arap using the harmonic map as initial guess
